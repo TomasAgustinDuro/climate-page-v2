@@ -1,13 +1,22 @@
-import './App.css'
-import Display from './components/display'
+import "./App.css";
+import React, { Suspense } from "react";
+import { MyCountryProvider } from "./context/contextCountry.jsx";
 
 function App() {
-
+  const Browser = React.lazy(() => import("./Browser/Browser.jsx"));
+  const Display = React.lazy(() => import("./Display/Display.jsx"));
   return (
     <>
-      <Display />
+      <div className="container">
+        <MyCountryProvider>
+          <Suspense fallback={<div className="loader"></div>}>
+            <Browser />
+            <Display />
+          </Suspense>
+        </MyCountryProvider>
+      </div>
     </>
-  )
+  );
 }
 
-export default App
+export default App;

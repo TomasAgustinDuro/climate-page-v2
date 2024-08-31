@@ -1,0 +1,25 @@
+.inputRoot {
+  background-color: #f0f0f0;
+  border-radius: 12px;
+  width: 35%;
+}
+
+.inputBase {
+  font-size: 16px; /* Tamaño de la fuente */
+  border: 1.5px solid lightgrey; /* Borde del input */
+  transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1); /* Transición */
+}
+
+.listbox {
+  background-color: #fff; /* Fondo del menú desplegable */
+  border: 1px solid #ccc; /* Borde del menú */
+}
+
+.option {
+  padding: 8px 16px; /* Espaciado interno de las opciones */
+  color: #333; /* Color del texto */
+}
+
+.option:hover {
+  background-color: #e0e0e0; /* Fondo al pasar el ratón */
+}

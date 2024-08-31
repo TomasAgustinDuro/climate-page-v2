@@ -1,0 +1,39 @@
+form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1em auto;
+  border: solid 1px red;
+  width: 100%;
+}
+
+button {
+  position: relative;
+  display: inline-block;
+  margin: 10px;
+  padding: 20px 30px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  letter-spacing: 1px;
+  text-decoration: none;
+  color: white;
+  background: transparent;
+  cursor: pointer;
+  transition: ease-out 0.5s;
+  border: 2px solid white;
+  border-radius: 10px;
+  box-shadow: inset 0 0 0 0 white;
+  height: 55px;
+}
+
+button:hover {
+  color: black;
+  box-shadow: inset 0 -100px 0 0 white;
+}
+
+button:active {
+  transform: scale(0.9);
+}
+

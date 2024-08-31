@@ -1,7 +1,6 @@
 // countryGeocoder.js
-export async function countryGeocoder() {
+export async function countryGeocoder(country) {
     const api_key = "50aa3d82bb2b4d869199b5a59e105aeb";
-    const country = "Argentina";
   
     const api_url = "https://api.opencagedata.com/geocode/v1/json";
     const request_url = `${api_url}?key=${api_key}&q=${country}&pretty=1&no_annotations=1`;
@@ -21,7 +20,7 @@ export async function countryGeocoder() {
       }
     } catch (error) {
       console.error('Error in countryGeocoder:', error);
-      throw error; // Re-throw to handle in the calling function
+      throw error; 
     }
   }
   
