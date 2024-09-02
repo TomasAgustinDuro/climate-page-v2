@@ -1,6 +1,12 @@
 body > * {
   margin: auto;
+  width: 100%;
 }
+
+body {
+  transition: background-image 1s ease-in-out;
+}
+
 
 .container {
   width: 100%;

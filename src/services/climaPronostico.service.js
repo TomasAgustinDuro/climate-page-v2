@@ -15,6 +15,8 @@ export async function climaPronostico(country) {
     }
     const pronostico = await response.json();
 
+    console.log(pronostico)
+
     return formatPronostico({pronostico});
   } catch (error) {
     console.error("Error in forecast:", error);
