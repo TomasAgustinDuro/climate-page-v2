@@ -12,9 +12,9 @@ function Browser() {
   });
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className={styles.formCountry} onSubmit={handleSubmit}>
       <AutoCompleteComponent value={inputValue} onChange={handleInputChange} />
-      <button type="submit">Enviar</button>
+      <button className={styles.btn} type="submit">Enviar</button>
     </form>
   );
 }

@@ -1,4 +1,4 @@
-form {
+.formCountry {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -8,7 +8,7 @@ form {
   border: solid 1px red;
 }
 
-button {
+.btn {
   position: relative;
   display: inline-block;
   margin: 10px;
@@ -29,17 +29,17 @@ button {
   height: 55px;
 }
 
-button:hover {
+.btn:hover {
   color: black;
   box-shadow: inset 0 -100px 0 0 white;
 }
 
-button:active {
+.btn:active {
   transform: scale(0.9);
 }
 
 @media (max-width: 768px) {
-  button {
+  .btn {
     padding: 1em;
   }
 }
