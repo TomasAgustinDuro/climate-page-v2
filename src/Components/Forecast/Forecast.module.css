@@ -1,0 +1,40 @@
+.sectionForecast > * {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.informationForecast > * {
+  display: flex;
+  flex-direction: column;
+}
+
+.temp {
+  padding: 0 2em;
+}
+
+.imgForecast {
+  width: 75%;
+  margin: auto;
+}
+
+.entry {
+  display: flex;
+}
+
+.key {
+  flex: 1;
+  text-align: left;
+}
+
+.value {
+  flex: 2;
+  text-align: right;
+}
+
+@media (max-width: 768px) {
+  .informationForecast {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

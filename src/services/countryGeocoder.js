@@ -1,4 +1,3 @@
-// countryGeocoder.js
 export async function countryGeocoder(country) {
     const api_key = "50aa3d82bb2b4d869199b5a59e105aeb";
   

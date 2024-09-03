@@ -7,13 +7,11 @@ body {
   transition: background-image 1s ease-in-out;
 }
 
-
 .container {
   width: 100%;
   display: flex;
   flex-direction: column;
 }
-
 
 /* Loader */
 .loader {

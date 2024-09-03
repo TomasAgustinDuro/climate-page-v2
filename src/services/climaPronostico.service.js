@@ -1,8 +1,7 @@
-import { formatPronostico } from "../utilities/apiDataFormatter";
-import { countryGeocoder } from "./countryGeocoder";
+import { formatPronostico } from '../utilities/apiDataFormatter';
+import { countryGeocoder } from './countryGeocoder';
 
 export async function climaPronostico(country) {
-
   try {
     const { latitud, longitud } = await countryGeocoder(country);
 
@@ -15,13 +14,10 @@ export async function climaPronostico(country) {
     }
     const pronostico = await response.json();
 
-    console.log(pronostico)
+    console.log(pronostico);
 
-    return formatPronostico({pronostico});
+    return formatPronostico({ pronostico });
   } catch (error) {
     console.error("Error in forecast:", error);
   }
-
-  
-
 }

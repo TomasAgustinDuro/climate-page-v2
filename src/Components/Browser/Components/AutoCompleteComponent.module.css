@@ -1,0 +1,38 @@
+.inputRoot {
+  background-color: #f0f0f0;
+  border-radius: 12px;
+  width: 35%;
+}
+
+.inputBase {
+  font-size: 16px; 
+  border: 1.5px solid lightgrey; 
+  transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1); 
+}
+
+
+.listbox {
+  background-color: #fff; 
+  border: 1px solid #ccc; 
+}
+
+.option {
+  padding: 8px 16px; 
+  color: #333; 
+}
+
+.option:hover {
+  background-color: #e0e0e0; 
+}
+
+@media (max-width: 768px) {
+  .inputRoot {
+    width: 60%;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1240px) {
+  .inputRoot {
+    width: 65%;
+  }
+}

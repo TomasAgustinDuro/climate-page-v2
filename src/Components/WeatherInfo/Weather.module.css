@@ -1,0 +1,22 @@
+.sectionWeather {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+}
+
+.sectionWeather img {
+  margin: auto;
+}
+
+.informationWeather > * {
+  display: flex;
+  flex-direction: row;
+  margin: 1em;
+  justify-content: space-between;
+}
+
+@media (min-width: 769px) and (max-width: 1240px) {
+  .sectionWeather {
+    width: 75%;
+  }
+}

@@ -3,7 +3,6 @@ form {
   align-items: center;
   justify-content: center;
   margin: 1em auto;
-
   width: 100%;
 }
 
@@ -37,3 +36,8 @@ button:active {
   transform: scale(0.9);
 }
 
+@media (max-width: 768px) {
+  button {
+    padding: 1em;
+  }
+}

@@ -1,16 +1,21 @@
 export function formatHoy({ data }) {
-  const informacionClimaDia = {
-    Ubicación: `${data?.name}, ${data?.sys?.country}`,
-    Temperatura: `${Math.round(data?.main?.temp)} °`,
-    Sensación: `${Math.round(data?.main?.feels_like)} °`,
-    Máxima: `${Math.round(data?.main?.temp_max)} °`,
-    Mínima: `${Math.round(data?.main?.temp_min)} °`,
-    Humedad: `${Math.round(data?.main?.humidity)}%`,
-    Icono: `https://openweathermap.org/img/wn/${data?.weather?.[0].icon}@2x.png`,
-    Weather: data.weather[0].main
-  };
+  const {
+    name,
+    sys: { country },
+    main: { temp, feels_like, temp_max, temp_min, humidity },
+    weather
+  } = data;
 
-  return informacionClimaDia;
+  return {
+    Ubicación: `${name}, ${country}`,
+    Temperatura: `${Math.round(temp)} °`,
+    Sensación: `${Math.round(feels_like)} °`,
+    Máxima: `${Math.round(temp_max)} °`,
+    Mínima: `${Math.round(temp_min)} °`,
+    Humedad: `${Math.round(humidity)}%`,
+    Icono: `https://openweathermap.org/img/wn/${weather[0].icon}@2x.png`,
+    Weather: weather[0].main
+  };
 }
 
 export function formatPronostico({ pronostico }) {
@@ -19,7 +24,7 @@ export function formatPronostico({ pronostico }) {
   for (let i = 3; i < pronostico.list.length; i += 8) {
     const rawDate = new Date(pronostico.list[i].dt_txt);
     const options = { 
-      weekday: 'long', // Nombre completo del día de la semana
+      weekday: 'long',
     };
     let formattedDate = rawDate.toLocaleDateString('es-ES', options);
 
@@ -29,16 +34,18 @@ export function formatPronostico({ pronostico }) {
     
     formattedDate = capitalizeFirstLetter(formattedDate);
     
+    const {
+      weather: [{ icon }],
+      main: { temp_max, temp_min, feels_like }
+    } = pronostico.list[i];
 
-    const informacionPronostico = {
+    forecast.push({
       date: formattedDate,
-      icono: `https://openweathermap.org/img/wn/${pronostico.list[i].weather[0].icon}@2x.png`,
-      maxima: `${Math.round(pronostico.list[i].main.temp_max)} °`,
-      mínima: `${Math.round(pronostico.list[i].main.temp_min)} °`,
-      sensacion: `${Math.round(pronostico.list[i].main.feels_like)} °`
-    };
-
-    forecast.push(informacionPronostico);
+      icono: `https://openweathermap.org/img/wn/${icon}@2x.png`,
+      maxima: `${Math.round(temp_max)} °`,
+      mínima: `${Math.round(temp_min)} °`,
+      sensacion: `${Math.round(feels_like)} °`
+    });
   }
 
   return forecast;
