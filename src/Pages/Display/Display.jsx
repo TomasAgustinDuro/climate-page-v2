@@ -6,20 +6,20 @@ import ForecastList from '../../Components/Forecast/ForecastList';
 import styles from './display.module.css';
 
 function Display() {
-  const { country } = useContext(MyContext);
-  const { hoy, forecast, error } = useWeatherData(country);
+  const { selectedCity } = useContext(MyContext);
+  const { today, forecast, error } = useWeatherData(selectedCity);
 
   if (error) {
     return <div className={styles.error}>{error}</div>;
   }
 
-  if (!hoy || !forecast) {
+  if (!today || !forecast) {
     return <div className="loader"></div>;
   }
 
   return (
     <div className={styles.articleContainer}>
-      <WeatherInfo hoy={hoy} />
+      <WeatherInfo today={today} />
       <ForecastList forecast={forecast} />
     </div>
   );

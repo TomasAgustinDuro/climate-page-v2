@@ -1,14 +1,12 @@
 import { useState, useContext } from "react";
 import { Autocomplete } from "@mui/material";
 import TextField from "@mui/material/TextField";
-import {geocoding} from "../../../services/geocoding.service"
+import { geocoding } from "../../../services/geocoding.service"
 import styles from "./AutoCompleteComponent.module.css";
 import { MyContext } from "../../../context/contextCountry";
 
 function AutoCompleteComponent() {
   const [options, setOptions] = useState([]);
-
-
   const { setSelectedCity } = useContext(MyContext)
 
   const handleInputChange = async (_, newValue) => {
@@ -20,7 +18,7 @@ function AutoCompleteComponent() {
     <Autocomplete
       onInputChange={handleInputChange}
       options={options}
-      getOptionLabel={(option) => option.name}
+      getOptionLabel={(option) => `${option.name}, ${option.country}`}
       classes={{
         root: styles.inputRoot,
         inputRoot: styles.inputBase,
@@ -28,10 +26,10 @@ function AutoCompleteComponent() {
         option: styles.option,
       }}
       renderInput={(params) => (
-        <TextField {...params} placeholder="Search for a city"/>
+        <TextField {...params} placeholder="Search for a city" />
       )}
       onChange={
-       (_, selectedValue) => {setSelectedCity(selectedValue)}
+        (_, selectedValue) => { setSelectedCity(selectedValue) }
       }
     />
   );
