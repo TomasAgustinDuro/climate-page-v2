@@ -1,13 +1,12 @@
-// MyContext.js
 import { createContext, useState } from 'react';
 
 export const MyContext = createContext();
 
 export const MyCountryProvider = ({ children }) => {
-    const [country, setCountry] = useState(null);
+    const [selectedCity, setSelectedCity] = useState(null);
 
     return (
-        <MyContext.Provider value={{ country, setCountry }}>
+        <MyContext.Provider value={{ selectedCity, setSelectedCity }}>
             {children}
         </MyContext.Provider>
     );
