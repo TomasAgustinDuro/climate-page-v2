@@ -1,22 +1,47 @@
 .sectionWeather {
   display: flex;
   flex-direction: column;
-  margin: auto;
+  gap: 0.5rem;
 }
 
-.sectionWeather img {
-  margin: auto;
+.sectionWeather h2 {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 0.5rem;
 }
 
-.informationWeather > * {
+.informationWeather {
   display: flex;
-  flex-direction: row;
-  margin: 1em;
-  justify-content: space-between;
+  flex-direction: column;
+  gap: 0.75rem;
 }
 
-@media (min-width: 769px) and (max-width: 1240px) {
-  .sectionWeather {
-    width: 75%;
-  }
+.entry {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  gap: 1rem;
+}
+
+.entry:last-child {
+  border-bottom: none;
+}
+
+.key {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.5);
+  font-weight: 400;
+}
+
+.key strong {
+  font-weight: 500;
+}
+
+.value {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #f0f0f0;
 }

@@ -1,38 +1,47 @@
 .inputRoot {
-  background-color: #f0f0f0;
-  border-radius: 12px;
-  width: 35%;
+  width: 100%;
+  max-width: 500px;
 }
 
 .inputBase {
-  font-size: 16px; 
-  border: 1.5px solid lightgrey; 
-  transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1); 
+  font-size: 1rem;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
+  color: #f0f0f0;
+  transition: border-color 0.2s ease;
 }
 
+.inputBase input {
+  color: #f0f0f0 !important;
+}
+
+.inputBase fieldset {
+  border-color: rgba(255, 255, 255, 0.15) !important;
+}
+
+.inputBase:hover fieldset {
+  border-color: rgba(255, 255, 255, 0.3) !important;
+}
+
+.inputBase input::placeholder {
+  color: rgba(255, 255, 255, 0.4) !important;
+  opacity: 1;
+}
 
 .listbox {
-  background-color: #fff; 
-  border: 1px solid #ccc; 
+  background-color: #1e2a3a;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  margin-top: 4px;
 }
 
 .option {
-  padding: 8px 16px; 
-  color: #333; 
+  padding: 10px 16px;
+  color: #e0e0e0;
+  font-size: 0.9rem;
 }
 
 .option:hover {
-  background-color: #e0e0e0; 
-}
-
-@media (max-width: 768px) {
-  .inputRoot {
-    width: 60%;
-  }
-}
-
-@media (min-width: 769px) and (max-width: 1240px) {
-  .inputRoot {
-    width: 65%;
-  }
+  background-color: rgba(79, 195, 247, 0.15);
 }
