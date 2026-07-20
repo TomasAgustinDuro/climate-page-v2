@@ -1,50 +1,75 @@
-# 🌦️ Climate Page
+# Climate Page
 
-**Climate Page** is a responsive web app that displays the current weather and the forecast for the upcoming days based on your location or a search.  
-It consumes data from an external weather API and presents it in a clean, intuitive interface.
+Aplicación web de consulta de clima en tiempo real. Buscá una ciudad y obtené temperatura actual, sensación térmica, humedad y pronóstico de los próximos días.
 
----
+## Stack
 
-## 🛠️ Tech Stack
+- **React 18** con Vite
+- **MUI** (Autocomplete)
+- **Open-Meteo API** (clima + geocoding, sin API key)
 
-- **React** – component-based UI
-- **JavaScript** – dynamic behavior
-- **CSS** – custom styling and responsiveness
-- **Vite** – fast build tool for modern web apps
+## Instalación
 
----
+```bash
+yarn install
+yarn dev
+```
 
-## ✨ Features
+## Estructura del proyecto
 
-- 📍 Search suggestions for location input
-- 📆 Current weather and multi-day forecast
-- 🌡️ Detailed data: temperature, humidity, feels-like, wind, etc.
-- 📱 Fully responsive design
+```
+src/
+├── Components/
+│   ├── Browser/          # Buscador con autocomplete
+│   ├── Forecast/         # Lista de pronóstico diario
+│   └── WeatherInfo/      # Información del clima actual
+├── Pages/
+│   └── Display/          # Página principal que orquesta la visualización
+├── context/
+│   └── CityContext.jsx   # Contexto global de ciudad seleccionada
+├── hooks/
+│   ├── useDebounce.js    # Hook genérico de debounce
+│   └── useWeatherData.js # Hook que obtiene y formatea datos meteorológicos
+├── services/
+│   ├── geocoding.service.js  # Búsqueda de ciudades (Open-Meteo Geocoding)
+│   └── weather.service.js    # Datos de clima actual + pronóstico (Open-Meteo Forecast)
+├── utilities/
+│   └── weatherFormatter.js   # Formateo de datos crudos para la UI
+├── App.jsx
+├── App.css
+└── main.jsx
+```
 
----
+## Flujo de datos
 
-## 🚀 Live Demo
+```
+Input del usuario
+    ↓
+searchCities() → Open-Meteo Geocoding → lista de ciudades
+    ↓
+Usuario selecciona una → CityContext (selectedCity)
+    ↓
+useWeatherData detecta cambio → fetchWeather(lat, lon)
+    ↓
+Open-Meteo Forecast → { current, daily }
+    ↓
+formatToday() + formatForecast() → datos formateados
+    ↓
+WeatherInfo + ForecastList renderizan
+```
 
-🔗 [Try it here](https://climate-page-v2.vercel.app)
+## API utilizada
 
----
+[Open-Meteo](https://open-meteo.com/) — 100% gratuita para uso no comercial, sin API key, 10.000 requests/día.
 
-## 🧠 What I learned
+- **Geocoding:** `https://geocoding-api.open-meteo.com/v1/search`
+- **Forecast:** `https://api.open-meteo.com/v1/forecast`
 
-- Integrating third-party APIs with async flows
-- Managing component state and conditional rendering
-- Designing clean UI with dynamic data
-- Improving search UX with suggestions and loading states
+## Scripts disponibles
 
----
-
-## 🧾 License
-
-This project is open-source under the [MIT License](LICENSE)
-
----
-
-## 🙋‍♂️ Author
-
-Made with curiosity and a bit of rain-checking  
-by [Tomás Duro](https://tommasdev.vercel.app)
+| Comando | Descripción |
+|---------|-------------|
+| `yarn dev` | Servidor de desarrollo |
+| `yarn build` | Build de producción |
+| `yarn preview` | Preview del build |
+| `yarn lint` | Ejecutar ESLint |

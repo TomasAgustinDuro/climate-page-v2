@@ -1,5 +1,17 @@
+/**
+ * Servicio de geocodificación usando la API de Open-Meteo.
+ * Busca ciudades por nombre y devuelve coordenadas + metadata.
+ */
+
 const BASE_URL = "https://geocoding-api.open-meteo.com/v1/search";
 
+/**
+ * Busca ciudades que coincidan con el texto ingresado.
+ * @param {string} input - Texto de búsqueda (nombre parcial o completo de ciudad).
+ * @returns {Promise<Array<{name: string, country: string, latitude: number, longitude: number}>>}
+ *   Array de ciudades con nombre, país y coordenadas. Vacío si no hay input.
+ * @throws {Error} Si la petición HTTP falla.
+ */
 export async function searchCities(input) {
   if (!input) {
     return [];
