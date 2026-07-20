@@ -6,16 +6,22 @@ export function formatToday(current, daily, selectedCity) {
         Minima: `${daily.temperature_2m_min[0]} °`,
         Sensacion: `${current.apparent_temperature} °`,
         Humedad: `${current.relative_humidity_2m}%`,
-        Weather: `${current.weather_code}`
     }
+}
+
+function capitalizeFirstLetter(str) {
+    if (!str) return ""; // Handle empty strings safely
+    return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
 export function formatForecast(daily) {
     const forecast = []
 
-    for (let i = 1; i < daily.time.length; i += 1){
+
+
+    for (let i = 1; i < daily.time.length; i += 1) {
         forecast.push({
-            Dia: daily.time[i],
+            Dia: capitalizeFirstLetter( new Date(daily.time[i] + "T12:00").toLocaleDateString('es-ES', { weekday: 'long' })),
             Maxima: daily.temperature_2m_max[i],
             Minima: daily.temperature_2m_min[i],
             Weather: daily.weather_code[i]
