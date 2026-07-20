@@ -1,14 +1,14 @@
 import { useState, useContext, useEffect } from "react";
 import { Autocomplete } from "@mui/material";
 import TextField from "@mui/material/TextField";
-import { geocoding } from "../../../services/geocoding.service"
+import { searchCities } from "../../../services/geocoding.service"
 import styles from "./AutoCompleteComponent.module.css";
-import { MyContext } from "../../../context/contextCountry";
+import { CityContext } from "../../../context/CityContext";
 import useDebounce from "../../../hooks/useDebounce";
 
 function AutoCompleteComponent() {
   const [options, setOptions] = useState([]);
-  const { setSelectedCity } = useContext(MyContext)
+  const { setSelectedCity } = useContext(CityContext)
   const [inputValue, setInputValue] = useState("")
   const debounceValue = useDebounce(inputValue, 400)
 
@@ -20,7 +20,7 @@ function AutoCompleteComponent() {
     }
 
     const fetchOptions = async () => {
-      const suggestions = await geocoding(debounceValue)
+      const suggestions = await searchCities(debounceValue)
       setOptions(suggestions)
     }
     fetchOptions()

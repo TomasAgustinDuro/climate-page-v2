@@ -1,4 +1,4 @@
-import styles from './Forecast.module.css';
+import styles from "./Forecast.module.css";
 
 const ForecastList = ({ forecast }) => (
   <section className={styles.sectionForecast}>
@@ -6,13 +6,13 @@ const ForecastList = ({ forecast }) => (
     <div className={styles.informationForecast}>
       {forecast.map((item, index) => (
         <div key={index} className={styles.detailForecast}>
-          <strong>{item.Dia}</strong>
+          <strong>{item.day}</strong>
           <div className={styles.temp}>
             <p>
-              <strong>Máxima: </strong> {item.Maxima}
+              <strong>Máxima: </strong> {item.maxTemperature}
             </p>
             <p>
-              <strong>Mínima: </strong> {item.Minima}
+              <strong>Mínima: </strong> {item.minTemperature}
             </p>
           </div>
         </div>

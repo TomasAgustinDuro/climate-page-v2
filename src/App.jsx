@@ -1,6 +1,6 @@
 import "./App.css";
 import React, { Suspense } from "react";
-import { MyCountryProvider } from "./context/contextCountry.jsx";
+import { CityProvider } from "./context/CityContext.jsx";
 const Browser = React.lazy(() => import("./Components/Browser/Browser.jsx"));
 const Display = React.lazy(() => import("./Pages/Display/Display.jsx"));
 
@@ -10,12 +10,12 @@ function App() {
 
   return ( 
     <div className="container">
-      <MyCountryProvider>
+      <CityProvider>
         <Suspense fallback={<div className="loader"></div>}>
           <Browser />
           <Display />
         </Suspense>
-      </MyCountryProvider>
+      </CityProvider>
     </div>
 
   );
