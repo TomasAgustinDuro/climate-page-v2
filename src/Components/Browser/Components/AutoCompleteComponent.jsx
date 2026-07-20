@@ -1,28 +1,24 @@
-import { useState, useRef } from "react";
+import { useState, useContext } from "react";
 import { Autocomplete } from "@mui/material";
 import TextField from "@mui/material/TextField";
-import { fetchSuggestions } from "../../../services/suggestions.service";
+import { geocoding } from "../../../services/geocoding.service"
 import styles from "./AutoCompleteComponent.module.css";
+import { MyContext } from "../../../context/contextCountry";
 
-function AutoCompleteComponent({ value, onChange }) {
+function AutoCompleteComponent() {
   const [options, setOptions] = useState([]);
-  const abortControllerRef = useRef(new AbortController()); // Referencia para el controlador de abortos
+  const { setSelectedCity } = useContext(MyContext)
 
-  const handleInputChange = async (event, newValue) => {
-    onChange(event, newValue); 
-    abortControllerRef.current.abort();
-    abortControllerRef.current = new AbortController();
-
-    const suggestions = await fetchSuggestions(newValue);
+  const handleInputChange = async (_, newValue) => {
+    const suggestions = await geocoding(newValue);
     setOptions(suggestions);
   };
 
   return (
     <Autocomplete
-      freeSolo
-      value={value}
       onInputChange={handleInputChange}
       options={options}
+      getOptionLabel={(option) => `${option.name}, ${option.country}`}
       classes={{
         root: styles.inputRoot,
         inputRoot: styles.inputBase,
@@ -30,8 +26,11 @@ function AutoCompleteComponent({ value, onChange }) {
         option: styles.option,
       }}
       renderInput={(params) => (
-        <TextField {...params} placeholder="Search for a city"/>
+        <TextField {...params} placeholder="Search for a city" />
       )}
+      onChange={
+        (_, selectedValue) => { setSelectedCity(selectedValue) }
+      }
     />
   );
 }

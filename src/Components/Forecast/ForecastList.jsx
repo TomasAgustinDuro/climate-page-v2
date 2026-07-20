@@ -6,17 +6,13 @@ const ForecastList = ({ forecast }) => (
     <div className={styles.informationForecast}>
       {forecast.map((item, index) => (
         <div key={index} className={styles.detailForecast}>
-          <strong>{item.date}</strong>
+          <strong>{item.Dia}</strong>
           <div className={styles.temp}>
-            <img src={item.icono} alt="icono clima" className={styles.imgForecast} />
             <p>
-              <strong>Máxima: </strong> {item.maxima}
+              <strong>Máxima: </strong> {item.Maxima}
             </p>
             <p>
-              <strong>Mínima: </strong> {item.mínima}
-            </p>
-            <p>
-              <strong>Sensación</strong> {item.sensacion}
+              <strong>Mínima: </strong> {item.Minima}
             </p>
           </div>
         </div>
