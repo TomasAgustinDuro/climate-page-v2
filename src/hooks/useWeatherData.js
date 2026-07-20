@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react';
-import { weather } from '../services/weather.service'
-import {formatToday, formatForecast} from "../utilities/weatherFormatted"
+import { useState, useEffect } from "react";
+import { fetchWeather } from "../services/weather.service";
+import { formatToday, formatForecast } from "../utilities/weatherFormatter";
 
 const useWeatherData = (selectedCity) => {
   const [today, setToday] = useState(null);
@@ -9,19 +9,19 @@ const useWeatherData = (selectedCity) => {
 
   useEffect(() => {
     if (!selectedCity) {
-      return
+      return;
     }
 
-    const { latitude , longitude } = selectedCity
+    const { latitude, longitude } = selectedCity;
 
     const fetchData = async () => {
       try {
-        const result = await weather(latitude , longitude);
+        const result = await fetchWeather(latitude, longitude);
         setToday(formatToday(result.current, result.daily, selectedCity));
-        setForecast(formatForecast(result.daily))
-      } catch (error) {
-        setError('Error fetching data.');
-        console.error('Error fetching data:', error);
+        setForecast(formatForecast(result.daily));
+      } catch (fetchError) {
+        setError("Error fetching data.");
+        console.error("Error fetching data:", fetchError);
       }
     };
 
