@@ -13,6 +13,15 @@ function Display() {
     return <div className={styles.error}>{error}</div>;
   }
 
+  if(!selectedCity) {
+    return (
+      <div className={styles.emptyState}>
+        <span className={styles.emptyIcon}>☁️</span>
+        <p>Buscá una ciudad para ver el clima</p>
+      </div>
+    );
+  }
+
   if (!today || !forecast) {
     return <div className="loader"></div>;
   }
