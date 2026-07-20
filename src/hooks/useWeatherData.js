@@ -1,8 +1,6 @@
 import { useState, useEffect } from 'react';
 import { weather } from '../services/weather.service'
 import {formatToday, formatForecast} from "../utilities/weatherFormatted"
-// import { ChangeTheme } from '../utilities/ChangeTheme';
-// import { colorSchemes } from '../utilities/ColorSchemes';
 
 const useWeatherData = (selectedCity) => {
   const [today, setToday] = useState(null);
@@ -21,7 +19,6 @@ const useWeatherData = (selectedCity) => {
         const result = await weather(latitude , longitude);
         setToday(formatToday(result.current, result.daily, selectedCity));
         setForecast(formatForecast(result.daily))
-        // ChangeTheme(result, colorSchemes);
       } catch (error) {
         setError('Error fetching data.');
         console.error('Error fetching data:', error);
